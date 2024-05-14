@@ -1,0 +1,79 @@
+{
+    "paths": {
+      "api/v1/list": {
+        "post": {
+          "tags": ["To do List"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/list"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "New To do list has been created"
+            },
+            "500": {
+              "description": "Failed to create list"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "list": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "due_date": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "priority": {
+              "type": "string",
+              "enum": ["low", "medium", "high"]
+            },
+            "is_completed": {
+              "type": "boolean"
+            }
+          }
+        },
+        "editList": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "due_date": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "priority": {
+              "type": "string",
+              "enum": ["low", "medium", "high"]
+            },
+            "is_completed": {
+              "type": "boolean"
+            }
+        }
+      }
+    }
+  }
+}
+  

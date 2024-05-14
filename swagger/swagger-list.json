@@ -1,0 +1,105 @@
+{
+    "paths": {
+        "/api/v1/list": {
+            "post": {
+                "tags": [
+                    "To do List"
+                ],
+                "summary": "create List",
+                "requestBody": {
+                    "content" : {
+                        "application/json": {
+                            "schema":{
+                                "$ref": "#/components/schemas/list"
+                            }
+                        }
+
+                    }
+                },
+                "responses": {
+                    "200": {
+                      "description": "New To do list has created"
+                    },
+                    "500": {
+                      "description": "Failed to create list"
+                    }
+                  }
+            },
+            "get": {
+                "tags":[
+                    "To do List"
+                ],
+                "summary": "Get all List",
+                "responses":{
+                    "200":{
+                        "description": "A json array of lists"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "To do List"
+                ],
+                "summary": "update",
+                "requestBody": {
+                    "content" : {
+                        "application/json": {
+                            "schema":{
+                                "$ref": "#/components/schemas/editList"
+                            }
+                        }
+
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "list succesfully updated"
+                    },
+                    "500": {
+                        "description": "failed"
+                    }
+                }
+            }
+        },
+        "/api/v1/list/id/{id}": {
+            "get": {
+                "tags": [
+                    "To do List"
+                ],
+                "summary":"Get List by id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200":{
+                        "description": "A json array of lists"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "To do List"
+                ],
+                "summary":"delete List by id",
+                "parameters": [{
+                    "in": "path",
+                    "name": "id",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200":{
+                        "description": "A json array of lists"
+                    }
+                }
+            }
+        }
+    }
+}

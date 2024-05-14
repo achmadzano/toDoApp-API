@@ -1,0 +1,29 @@
+{
+    "parameters": {
+      "super-admin-token": {
+        "in": "header",
+        "name": "x-access-token",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "recruiter-token": {
+        "in": "header",
+        "name": "x-access-token",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "user-token": {
+        "in": "header",
+        "name": "x-access-token",
+        "description": "Access token",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  }

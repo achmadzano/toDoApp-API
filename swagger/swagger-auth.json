@@ -1,0 +1,138 @@
+{
+    "paths": {
+      "/api/v1/auth/login": {
+        "post": {
+          "tags": [
+            "Auth"
+          ],
+          "summary": "User login to get token",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref":"#/components/schemas/login"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Login success"
+            },
+            "401": {
+              "description": "Login failed: user or password is invalid"
+            },
+            "500": {
+              "description": "Login failed"
+            }
+          }
+        }
+      },
+      "/api/v1/auth/loginSSO": {
+        "post": {
+          "tags": [
+            "Auth"
+          ],
+          "summary": "User login to get token",
+          "parameters": [{
+            "in": "header",
+            "name": "x-access-token",
+            "schema": {
+              "type": "string"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwNDQyIiwiZW1haWwiOiJkZWFuLmhpZGF5YXRAaWJtLWp0aS5jb20ifQ.aPIXU7MDvHqgxYsFbHOqe2_r52g2xDnNyPaUUa831ps"
+          }],
+          "responses": {
+            "200": {
+              "description": "Login success"
+            },
+            "401": {
+              "description": "Login failed: user or password is invalid"
+            },
+            "500": {
+              "description": "Login failed"
+            }
+          }
+        }
+      },
+      "/api/v1/auth/request-reset": {
+        "post": {
+          "tags": [
+            "Auth"
+          ],
+          "summary": "Send link to reset user password",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "email"
+                  ],
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "email": "ateng@gmail.com"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Reset link sent"
+            },
+            "500": {
+              "description": "Failed to send reset link"
+            }
+          }
+        }
+      },
+      "/api/v1/auth/reset": {
+        "post": {
+          "tags": [
+            "Auth"
+          ],
+          "summary": "Reset user password",
+          "parameters": [{
+            "in": "query",
+            "name": "token",
+            "schema": {
+              "type": "string"
+            }
+          }],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "newPassword"
+                  ],
+                  "properties": {
+                    "newPassword": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "newPassword": "password"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Password reset"
+            },
+            "500": {
+              "description": "Failed to reset password"
+            }
+          }
+        }
+      }
+    }
+  }
